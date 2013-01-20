@@ -1,4 +1,4 @@
-- title '罵倒文生成システム'
+- title '罵倒支援システム'
 
 .page-header
   %h2 罵倒文一覧
@@ -17,8 +17,6 @@
                 %th
                   テキスト
                 %th
-                  キーワード
-                %th
                   操作
             %tbody
               - @statuses.each do |status|
@@ -26,13 +24,11 @@
                   %td
                     = link_to status.id, status_path(status)
                   %td
-                    = status.status
+                    = status.text
                   %td
-                    = status.keyword
-                  %td
-                    = link_to '罵倒', "https://twitter.com/intent/tweet?text=#{status.status}", :class => 'btn btn btn', :target => '_blank'
+                    = link_to '罵倒', "https://twitter.com/intent/tweet?text=#{status.text}", :class => 'btn btn btn', :target => '_blank'
 
           = will_paginate @statuses, :renderer => BootstrapPaginationRenderer
 
   %p{:class=>"pull-right pager"}
-    = link_to "罵倒文生成システムに戻る", root_path
+    = link_to "罵倒支援システムに戻る", root_path

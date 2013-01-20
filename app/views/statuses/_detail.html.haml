@@ -9,10 +9,7 @@
       %td= @status.id
     %tr
       %td テキスト
-      %td= @status.status
-    %tr
-      %td キーワード
-      %td= @status.keyword
+      %td= @status.text
     %tr
       %td 操作
-      %td= link_to 'この内容で罵倒する', "https://twitter.com/intent/tweet?text=#{@status.status}", :class => 'btn btn btn', :target => '_blank'
+      %td= link_to 'この内容で罵倒する', "https://twitter.com/intent/tweet?text=#{@status.text}", :class => 'btn btn btn', :target => '_blank'
