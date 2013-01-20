@@ -18,6 +18,8 @@
                   テキスト
                 %th
                   キーワード
+                %th
+                  操作
             %tbody
               - @statuses.each do |status|
                 %tr
@@ -27,6 +29,8 @@
                     = status.status
                   %td
                     = status.keyword
+                  %td
+                    = link_to '罵倒', "https://twitter.com/intent/tweet?text=#{status.status}", :class => 'btn btn btn', :target => '_blank'
 
           = will_paginate @statuses, :renderer => BootstrapPaginationRenderer
 

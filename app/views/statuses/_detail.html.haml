@@ -13,3 +13,6 @@
     %tr
       %td キーワード
       %td= @status.keyword
+    %tr
+      %td 操作
+      %td= link_to 'この内容で罵倒する', "https://twitter.com/intent/tweet?text=#{@status.status}", :class => 'btn btn btn', :target => '_blank'

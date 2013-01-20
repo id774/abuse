@@ -9,18 +9,7 @@
   .fieldset
     .status
       .row
-        .span4.offset1
-          %label 罵倒対象のテキストを入力してください
-          .input
-            = f.text_area :status, :rows => 10
-
-            .form-actions
-              .input
-                = f.submit '送信する', :class => 'btn btn-primary'
-                - unless session[:result].blank?
-                  = link_to '結果を Twitter に投稿', "https://twitter.com/intent/tweet?text=#{session[:text]}→#{session[:result]}", :class => 'btn btn btn', :target => '_blank'
-
-        .span6
+        .span5
           %div{:id => "ac_form", :style => "clear:both;margin:5px"}
             %h3
               %a{:href => "#"} このサービスについて
@@ -39,6 +28,17 @@
                   特徴抽出
               %p
                 キーワード分類
+
+        .span5.offset1
+          %label 罵倒対象のツイートを入力してください
+          .input
+            = f.text_area :status, :rows => 5
+
+            .form-actions
+              .input
+                = f.submit '送信する', :class => 'btn btn-primary'
+                - unless session[:result].blank?
+                  = link_to '結果を Twitter に投稿', "https://twitter.com/intent/tweet?text=#{session[:text]}→#{session[:result]}", :class => 'btn btn btn', :target => '_blank'
 
           %p{:class=>"pull-right pager"}
             = link_to "罵倒文一覧を見る", statuses_path
