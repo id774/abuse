@@ -33,6 +33,9 @@
           %label 罵倒対象のツイートを入力してください
           .input
             = f.text_area :text, :rows => 5
+          .input
+            %label 日時
+            = f.text_field :created_at
 
             .form-actions
               .input

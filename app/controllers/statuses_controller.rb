@@ -1,13 +1,11 @@
 # -*- encoding: utf-8 -*-
 
 require 'MeCab'
+require 'date'
 
 class StatusesController < ApplicationController
   def new
     @status = Status.new
-    config = Rails.configuration.database_configuration
-    @search = Status.search(params[:search], :order => "id DESC")
-    @statuses = @search.paginate(:page => params[:page], :order => "id DESC")
 
     respond_to do |format|
       format.html
@@ -25,21 +23,22 @@ class StatusesController < ApplicationController
 
   def create
     @status = Status.new(params[:status])
+    @status.created_at = Date.strptime(params[:status][:created_at], "%Y-%m-%d %X")
 
     respond_to do |format|
-      if @story.save
-        # Notifier.accept_stories(@story).deliver if Rails.env.production?
+      if @status.save
+        # Notifier.accept_stories(@status).deliver if Rails.env.production?
         notice = "#{@result}"
         format.html { redirect_to root_path,
           notice: notice }
-        format.json { render json: @story, status: :created, location: @story }
+        format.json { render json: @status, status: :created, location: @status }
       end
     end
   end
 
   def index
-    @search = Status.search(params[:search], :order => "id DESC")
-    @statuses = @search.paginate(:page => params[:page], :order => "id DESC")
+    @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
+    @statuses = @search.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
     respond_to do |format|
       format.html
       format.json { render json: @statuses }
