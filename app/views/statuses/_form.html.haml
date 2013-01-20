@@ -1,0 +1,44 @@
+= form_for @status do |f|
+  -if @status.errors.any?
+    .alert.alert-message.block-message.error
+      %h3= "#{@status.errors.count} 件のエラーが発生したため、処理できませんでした。"
+      %ul
+        - @status.errors.full_messages.each do |msg|
+          %li= msg
+
+  .fieldset
+    .status
+      .row
+        .span4.offset1
+          %label 罵倒対象のテキストを入力してください
+          .input
+            = f.text_area :status, :rows => 10
+
+            .form-actions
+              .input
+                = f.submit '送信する', :class => 'btn btn-primary'
+                - unless session[:result].blank?
+                  = link_to '結果を Twitter に投稿', "https://twitter.com/intent/tweet?text=#{session[:text]}→#{session[:result]}", :class => 'btn btn btn', :target => '_blank'
+
+        .span6
+          %div{:id => "ac_form", :style => "clear:both;margin:5px"}
+            %h3
+              %a{:href => "#"} このサービスについて
+            .clearfix
+              %p
+                %b
+                  なにこれ
+              %p
+                このサービスでは罵倒文を生成することができます。
+
+            %h3
+              %a{:href => "#"} キーワード
+            .clearfix
+              %p
+                %b
+                  特徴抽出
+              %p
+                キーワード分類
+
+          %p{:class=>"pull-right pager"}
+            = link_to "罵倒文一覧を見る", statuses_path

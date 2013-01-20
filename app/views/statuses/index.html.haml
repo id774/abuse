@@ -1,0 +1,34 @@
+- title '罵倒文生成システム'
+
+.page-header
+  %h2 罵倒文一覧
+  %small 罵倒文の一覧です。スコアが高い順に表示します。
+
+.statuses-index
+  .container
+    .content
+      .row
+        .span12
+          %table{:class => 'table table-bordered table-striped'}
+            %thead
+              %tr
+                %th
+                  ID
+                %th
+                  テキスト
+                %th
+                  キーワード
+            %tbody
+              - @statuses.each do |status|
+                %tr
+                  %td
+                    = link_to status.id, status_path(status)
+                  %td
+                    = status.status
+                  %td
+                    = status.keyword
+
+          = will_paginate @statuses, :renderer => BootstrapPaginationRenderer
+
+  %p{:class=>"pull-right pager"}
+    = link_to "罵倒文生成システムに戻る", root_path

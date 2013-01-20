@@ -1,0 +1,14 @@
+- title '詳細 - 罵倒文生成システム'
+
+%section
+  .container
+    .page-header
+      %h2 罵倒文 - 詳細
+    .row
+      .span12
+        = render 'detail'
+
+  %p{:class=>"pull-left pager"}
+    = link_to "罵倒文生成システムに戻る", root_path
+  %p{:class=>"pull-right pager"}
+    = link_to "罵倒文一覧に戻る", statuses_path

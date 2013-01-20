@@ -1,0 +1,15 @@
+%table{:class => 'table table-bordered table-striped'}
+  %thead
+    %tr
+      %th{:style => "width: 150px;"} 項目
+      %th 内容
+  %tbody
+    %tr
+      %td ID
+      %td= @story.id
+    %tr
+      %td 分類
+      %td= @story.classify
+    %tr
+      %td テキスト
+      %td= @story.text

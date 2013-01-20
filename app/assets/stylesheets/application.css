@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require bootstrap
+ *= require_tree . 
+ *= require style
+*/
+
+span.previous_page.disabled,
+em.current {
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-right-color: rgba(0, 0, 0, 0.148438);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-width: 0px;
+  /* cursor: auto; */
+  display: block;
+  float: left;
+  /* font-family: verdana, arial, helvetica, sans-serif; */
+  /* font-size: 13px; */
+  font-style: normal;
+  /* font-weight: normal; */
+  height: 33px;
+  line-height: 33px;
+  /* margin-bottom: 0px; */
+  /* margin-left: 0px; */
+  /* margin-right: 0px; */
+  /* margin-top: 0px; */
+  /* overflow-y: visible; */
+  padding-bottom: 0px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 0px;
+  text-decoration: none;
+}
+
+span.previous_page.disabled {
+  width: 55px;
+}
+
+em.current {
+  background-color: #C7EEFE;
+  /* background-color: lighten(@blue, 45%); */
+  width: 10px;
+}
