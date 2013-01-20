@@ -6,6 +6,8 @@ class StatusesController < ApplicationController
   def new
     @status = Status.new
     config = Rails.configuration.database_configuration
+    @search = Status.search(params[:search], :order => "id DESC")
+    @statuses = @search.paginate(:page => params[:page], :order => "id DESC")
 
     respond_to do |format|
       format.html
