@@ -1,8 +1,11 @@
 # -*- encoding: utf-8 -*-
 
+require 'MeCab'
+
 class ResultsController < ApplicationController
   def show
     @status = Status.find(params[:id])
+
     respond_to do |format|
       format.html
       format.json { render json: @status }
@@ -10,12 +13,29 @@ class ResultsController < ApplicationController
   end
 
   def index
+    @arel_table = Status.arel_table
+    conditions = session[:wakati]
+    status = Status.where(generate_or_condition(conditions))
+    @statuses = status.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
     @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
-    @statuses = @search.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
+
     respond_to do |format|
       format.html
       format.json { render json: @statuses }
     end
+  end
+
+  private
+  def generate_or_condition(fields)
+    conditions = nil
+    fields.each {|field|
+      if conditions.nil?
+        conditions = @arel_table[:text].matches("%" + field + "%")
+      else
+        conditions = conditions.or(@arel_table[:text].matches("%" + field + "%"))
+      end
+    }
+    conditions
   end
 end
 

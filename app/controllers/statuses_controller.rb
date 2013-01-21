@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 
 require 'MeCab'
-require 'date'
 
 class StatusesController < ApplicationController
   def new
@@ -15,6 +14,7 @@ class StatusesController < ApplicationController
 
   def show
     @status = Status.find(params[:id])
+
     respond_to do |format|
       format.html
       format.json { render json: @status }
@@ -24,19 +24,20 @@ class StatusesController < ApplicationController
   def create
     @status = Status.new(params[:status])
     wakati = wakati_split(@status.text)
-    p wakati
+    session[:wakati] = wakati
 
     respond_to do |format|
       notice = '罵倒の準備ができました！'
       format.html { redirect_to results_path,
         notice: notice }
-      format.json { render json: @status, status: :created, location: @kabbala }
+      format.json { render json: @statuses, status: :created, location: @statuses }
     end
   end
 
   def index
     @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
     @statuses = @search.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
+
     respond_to do |format|
       format.html
       format.json { render json: @statuses }
