@@ -3,7 +3,7 @@
 setup() {
     LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
     PATH=/opt/ruby/1.9.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-    APP_DIR=/var/lib/rails/goodstory
+    APP_DIR=/var/lib/rails/abuse
 }
 
 update() {
