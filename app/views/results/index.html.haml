@@ -1,0 +1,45 @@
+- title '罵倒支援システム'
+
+.page-header
+  %h2 罵倒文一覧
+  %small 罵倒文の一覧です。
+
+.statuses-index
+  .container
+    .content
+      .row
+        .span12
+          %table{:class => 'table table-bordered table-striped'}
+            %thead
+              %tr
+                %th
+                  ID
+                %th
+                  テキスト
+                %th
+                  作成日時
+                %th
+                  操作
+            %tbody
+              - @statuses.each do |status|
+                %tr
+                  %td
+                    = link_to status.id, status_path(status)
+                  %td
+                    = status.text
+                  %td
+                    = status.created_at.strftime("%Y/%m/%d %X")
+                  %td
+                    = link_to '罵倒', "https://twitter.com/intent/tweet?text=#{status.text}", :class => 'btn btn btn', :target => '_blank'
+
+          .form-actions
+            .input
+              = form_for @search, :url => statuses_path, :html => {:method => :get} do |f|
+                = f.label "罵倒検索"
+                = f.text_field :text_contains
+                = f.submit "Submit", :class => 'btn btn-primary'
+
+          = will_paginate @statuses, :renderer => BootstrapPaginationRenderer
+
+  %p.pull-right.pager
+    = link_to "罵倒支援システムに戻る", root_path
