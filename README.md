@@ -7,6 +7,12 @@ See doc/README.ja file.
 (document written in Japanese.)
 
 
+Developers
+----------
+
+See doc/AUTHORS.
+
+
 Author
 ------
 
