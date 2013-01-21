@@ -42,6 +42,6 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   # Devise
-  config.include Devise::TestHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :controller
+  #config.include Devise::TestHelpers, :type => :controller
+  #config.extend ControllerMacros, :type => :controller
 end
