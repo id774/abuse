@@ -1,7 +1,5 @@
 # -*- encoding: utf-8 -*-
 
-require 'MeCab'
-
 class StatusesController < ApplicationController
   def new
     @status = Status.new
@@ -23,11 +21,10 @@ class StatusesController < ApplicationController
 
   def create
     @status = Status.new(params[:status])
-    wakati = wakati_split(@status.text)
-    session[:wakati] = wakati
+    session[:abuse] = @status.text
 
     respond_to do |format|
-      notice = '罵倒の準備ができました！'
+      notice = '罵倒文候補の一覧を表示します'
       format.html { redirect_to results_path,
         notice: notice }
       format.json { render json: @statuses, status: :created, location: @statuses }
@@ -42,25 +39,6 @@ class StatusesController < ApplicationController
       format.html
       format.json { render json: @statuses }
     end
-  end
-
-  private
-  def wakati_split(string)
-    wakati = MeCab::Tagger.new('-O wakati')
-    wakati.parse(string).split(" ")
-  end
-end
-
-class String
-  def truncate_screen_width(width , suffix = "...")
-    i = 0
-    self.each_char.inject(0) do |c, x|
-      c += x.ascii_only? ? 1 : 2
-      i += 1
-      next c if c < width
-      return self[0 , i] + suffix
-    end
-    return self
   end
 end
 

@@ -12,10 +12,10 @@
       %td= @status.text
     %tr
       %td 作成日時
-      %td= @status.created_at.strftime("%Y/%m/%d %X")
+      %td= @status.created_at.strftime("%Y/%m/%d")
     %tr
       %td 変更日時
-      %td= @status.created_at.strftime("%Y/%m/%d %X")
+      %td= @status.created_at.strftime("%Y/%m/%d")
     %tr
       %td 操作
       %td= link_to 'この内容で罵倒する', "https://twitter.com/intent/tweet?text=#{@status.text}", :class => 'btn btn btn', :target => '_blank'

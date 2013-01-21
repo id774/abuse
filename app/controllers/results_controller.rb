@@ -14,8 +14,8 @@ class ResultsController < ApplicationController
 
   def index
     @arel_table = Status.arel_table
-    conditions = session[:wakati]
-    status = Status.where(generate_or_condition(conditions))
+    wakati_array = wakati_split(session[:abuse])
+    status = Status.where(generate_or_condition(wakati_array))
     @statuses = status.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
     @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
 
@@ -36,6 +36,11 @@ class ResultsController < ApplicationController
       end
     }
     conditions
+  end
+
+  def wakati_split(string)
+    wakati = MeCab::Tagger.new('-O wakati')
+    wakati.parse(string).split(" ")
   end
 end
 

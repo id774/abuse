@@ -18,27 +18,35 @@
                 %b
                   なにこれ
               %p
-                誰でもみんなトデスキングを罵倒したい。そんな需要にこたえるサービスです。
+                誰でもみんな <a href="http://twitter.com/todesking" target="_blank">@todesking</a> を罵倒したい。そんな需要にこたえるサービスです。
+              %p
+                %b
+                  罵倒とは
+              %p
+                <a href="http://togetter.com/li/50724" target="_blank">こちら</a>をご覧ください。
 
             %h3
-              %a{:href => "#"} キーワード
+              %a{:href => "#"} 操作方法
             .clearfix
               %p
                 %b
-                  特徴抽出
+                  罵倒対象文の入力
               %p
-                キーワード分類
+                テキストボックスに罵倒対象となるツイートまたはキーワードを入力するかコピー＆ペーストしてください。送信するをクリックすると適切な罵倒候補文一覧が表示されます。
+              %p
+                %b
+                  罵倒する
+              %p
+                罵倒候補文一覧が表示されたらお好みの罵倒文を選び、罵倒をクリックするかお使いの Twitter クライアントに貼り付けてご利用ください。
 
         .span5.offset1
-          %label 罵倒対象のツイートを入力してください
+          %label 罵倒対象のツイートもしくはキーワードを入力してください
           .input
             = f.text_area :text, :rows => 5
 
             .form-actions
               .input
                 = f.submit '送信する', :class => 'btn btn-primary'
-                - unless session[:result].blank?
-                  = link_to '結果を Twitter に投稿', "https://twitter.com/intent/tweet?text=#{session[:text]}→#{session[:result]}", :class => 'btn btn btn', :target => '_blank'
 
           %p{:class=>"pull-right pager"}
-            = link_to "罵倒文一覧を見る", statuses_path
+            = link_to "すべての罵倒文を見る", statuses_path
