@@ -1,8 +1,8 @@
 RailsApp::Application.routes.draw do
   root :to => 'statuses#new'
   resources :statuses,
-    :only => [:new, :create, :index, :show, :edit, :update]
+    :only => [:index, :show, :new, :create]
   resources :results,
-    :only => [:index, :show]
+    :only => [:index]
   match '*path', :to=>'application#error_404'
 end

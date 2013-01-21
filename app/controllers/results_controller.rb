@@ -3,15 +3,6 @@
 require 'MeCab'
 
 class ResultsController < ApplicationController
-  def show
-    @status = Status.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @status }
-    end
-  end
-
   def index
     @arel_table = Status.arel_table
     wakati_array = wakati_split(session[:abuse])
