@@ -1,7 +1,7 @@
 - title '罵倒支援サービス - 罵倒一覧表示'
 
 .page-header
-  %h2 罵倒文 - 一覧
+  %h2 罵倒支援サービス - 罵倒一覧表示
   %small 罵倒文の一覧です。
 
 .statuses-index
@@ -41,5 +41,7 @@
 
           = will_paginate @statuses, :renderer => BootstrapPaginationRenderer
 
+  %p.pull-left.pager
+    = link_to "罵倒文一覧に戻る", statuses_path
   %p.pull-right.pager
     = link_to "罵倒支援サービスに戻る", root_path

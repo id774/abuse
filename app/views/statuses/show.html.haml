@@ -3,12 +3,12 @@
 %section
   .container
     .page-header
-      %h2 罵倒文 - 詳細
+      %h2 罵倒支援サービス - 罵倒詳細表示
     .row
       .span12
         = render 'detail'
 
-  %p{:class=>"pull-left pager"}
-    = link_to "罵倒支援サービスに戻る", root_path
-  %p{:class=>"pull-right pager"}
+  %p.pull-left.pager
     = link_to "罵倒文一覧に戻る", statuses_path
+  %p.pull-right.pager
+    = link_to "罵倒支援サービスに戻る", root_path
