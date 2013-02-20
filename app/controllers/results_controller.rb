@@ -5,6 +5,7 @@ require 'MeCab'
 class ResultsController < ApplicationController
   def index
     @arel_table = Status.arel_table
+    session[:abuse] ||= ""
     nouns_array = pickup_nouns(session[:abuse])
     status = Status.where(generate_or_condition(nouns_array))
     @statuses = status.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
