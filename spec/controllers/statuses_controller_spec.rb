@@ -28,10 +28,29 @@ describe StatusesController do
     end
 
     describe '送信' do
-      context '罵倒対象のツイートを送信する' do
+      context '罵倒対象の字句を送信する' do
         it "罵倒文候補が表示される" do
           post 'create', :status => {
             "text" => "死",
+          }
+
+          status = Status.find(4)
+
+          response.should be_redirect
+          response.redirect_url.should == 'http://test.host/results'
+          response.header.should have_at_least(1).items
+          response.body.should have_at_least(1).items
+          flash[:notice].should_not be_nil
+          flash[:notice].should == '罵倒文候補の一覧を表示します'
+        end
+      end
+    end
+
+    describe '送信' do
+      context '罵倒対象の文章を送信する' do
+        it "罵倒文候補が表示される" do
+          post 'create', :status => {
+            "text" => "みんなでワイワイ！定時出社！社会は厳しい！",
           }
 
           status = Status.find(4)
