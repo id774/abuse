@@ -2,8 +2,8 @@
 
 setup() {
     LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
-    PATH=/opt/ruby/1.9.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-    APP_DIR=/var/lib/rails/abuse
+    PATH=/opt/ruby/2.0/bin:/opt/ruby/1.9.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+    APP_DIR=/var/www/rails/abuse
 }
 
 update() {
