@@ -36,7 +36,7 @@ class ResultsController < ApplicationController
     nouns = []
     while node
       if /^名詞/ =~ node.feature.force_encoding("utf-8").split(/,/)[0] then
-        nouns.push(node.surface)
+        nouns.push(node.surface.force_encoding("utf-8"))
       end
       node = node.next
     end
