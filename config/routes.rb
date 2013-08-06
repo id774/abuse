@@ -1,4 +1,4 @@
-Rails4Bootstrap::Application.routes.draw do
+RailsApp::Application.routes.draw do
   root :to => 'statuses#new'
   resources :statuses,
     :only => [:index, :show, :new, :create]
