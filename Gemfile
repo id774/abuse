@@ -1,46 +1,32 @@
-# Version:20130202
+# Version:20130806
 
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '~>3'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
+gem 'rails', '~> 4'
 gem 'sqlite3'
-# gem 'mysql2'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails', "~> 3"
-  gem 'coffee-rails', "~> 3"
-  gem 'uglifier', "~> 1"
-end
-
+gem 'sass-rails', '~> 4'
+gem 'uglifier', '~> 1.3'
+gem 'coffee-rails', '~> 4'
+# gem 'execjs'
+# gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.2'
 gem 'haml-rails'
-#gem 'devise', "< 2"
-#gem 'kaminari'
+gem 'compass-rails'
 gem 'i18n_generators'
 
-#gem 'rubypython'
+group :doc do
+  gem 'sdoc', require: false
+end
 
-#gem 'execjs'
-#gem 'therubyracer'
+# gem "meta_search"
+gem "will_paginate", '~> 3.0.0'
 
-# Use unicorn as the web server
+# gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
-# Search
-gem "meta_search"
-gem "will_paginate", "~> 3.0.pre2"
+# gem 'capistrano', group: :development
+# gem 'debugger', group: [:development, :test]
 
 group :test do
   gem 'rspec'
@@ -53,5 +39,4 @@ end
 group :development do
   gem "cucumber"
   gem "bundler"
-  gem "jeweler"
 end

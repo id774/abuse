@@ -2,7 +2,7 @@
 
 kickstart() {
     export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
-    export PATH=/var/lib/jenkins/bin:/opt/ruby/1.9.3/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+    export PATH=/var/lib/jenkins/bin:/opt/ruby/current/bin:/opt/ruby/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
     export RACK_ROOT="."
     export RACK_ENV="test"
     export RAILS_ENV="test"
@@ -13,7 +13,7 @@ kickstart() {
 
 exec_rspec() {
     cd $RACK_ROOT
-    bundle install --path vendor/gems
+    bundle install --path vendor/bundler
     bundle exec rake db:migrate
     bundle exec rake simplecov
 }

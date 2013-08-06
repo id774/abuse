@@ -20,7 +20,7 @@ class StatusesController < ApplicationController
   end
 
   def create
-    @status = Status.new(params[:status])
+    @status = Status.new(status_params)
     session[:abuse] = @status.text
 
     respond_to do |format|
@@ -32,12 +32,21 @@ class StatusesController < ApplicationController
   end
 
   def index
-    @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
-    @statuses = @search.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
+    # @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
+    @statuses = Status.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
 
     respond_to do |format|
       format.html
       format.json { render json: @statuses }
     end
   end
+
+  private
+    def set_status
+      @status = Status.find(params[:id])
+    end
+
+    def status_params
+      params.require(:status).permit(:text)
+    end
 end

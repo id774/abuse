@@ -2,13 +2,13 @@
 
 setup() {
     LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
-    PATH=/opt/ruby/2.0/bin:/opt/ruby/1.9.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-    APP_DIR=/var/www/rails/abuse
+    PATH=/opt/ruby/current/bin:/opt/ruby/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+    APP_DIR=/var/www/rails/rails4-bootstrap
 }
 
 update() {
     cd $APP_DIR
-    git pull
+    svn up
     bundle exec rake assets:precompile RAILS_ENV=production
     # bundle exec rake db:migrate RAILS_ENV=production
     rm -rf tmp/*

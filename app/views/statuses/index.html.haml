@@ -1,5 +1,3 @@
-- title '罵倒支援サービス - 罵倒一覧表示'
-
 .page-header
   %h2 罵倒支援サービス - 罵倒一覧表示
   %small 罵倒文の一覧です。
@@ -32,7 +30,7 @@
                   %td
                     = link_to '罵倒', "https://twitter.com/intent/tweet?text=#{status.text}", :class => 'btn btn btn', :target => '_blank'
 
-          .form-actions
+          -# .form-actions
             .input
               = form_for @search, :url => statuses_path, :html => {:method => :get} do |f|
                 = f.label "罵倒検索"

@@ -9,7 +9,7 @@ class ResultsController < ApplicationController
     nouns_array = pickup_nouns(session[:abuse])
     status = Status.where(generate_or_condition(nouns_array))
     @statuses = status.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
-    @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
+    # @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
 
     respond_to do |format|
       format.html
@@ -18,6 +18,7 @@ class ResultsController < ApplicationController
   end
 
   private
+
   def generate_or_condition(fields)
     conditions = nil
     fields.each {|field|
