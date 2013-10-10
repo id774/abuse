@@ -5,7 +5,7 @@ require 'fluent-logger'
 
 class ResultsController < ApplicationController
   def index
-    @fluentd = Fluent::Logger::FluentLogger.open('vocabulary',
+    @fluentd = Fluent::Logger::FluentLogger.open('abuse',
       host = 'localhost', port = 9999)
 
     @arel_table = Status.arel_table
