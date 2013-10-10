@@ -1,4 +1,4 @@
-# Version:20130806
+# Version:20131010
 
 source 'https://rubygems.org'
 
@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml-rails'
 gem 'compass-rails'
 gem 'i18n_generators'
+gem 'fluent-logger'
 
 group :doc do
   gem 'sdoc', require: false
