@@ -32,8 +32,7 @@ class StatusesController < ApplicationController
   end
 
   def index
-    # @search = Status.search(params[:search], :order => "created_at DESC, id DESC")
-    @statuses = Status.paginate(:page => params[:page], :order => "created_at DESC, id DESC")
+    @statuses = Status.page(params[:page]).per(10).order(id: :desc)
 
     respond_to do |format|
       format.html

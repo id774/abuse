@@ -21,8 +21,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# gem "meta_search"
-gem "will_paginate", '~> 3.0.0'
+gem "kaminari", '~> 0.15.0'
+gem "kaminari-bootstrap", '~> 0.1.3'
 
 # gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'unicorn'

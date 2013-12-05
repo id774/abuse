@@ -39,7 +39,7 @@
                 = f.text_field :text_contains
                 = f.submit "Submit", :class => 'btn btn-primary'
 
-          = will_paginate @statuses, :renderer => BootstrapPaginationRenderer
+          = paginate @statuses
 
   %p.pull-right.pager
     = link_to "罵倒支援サービスに戻る", root_path
