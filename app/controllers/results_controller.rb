@@ -13,7 +13,7 @@ class ResultsController < ApplicationController
 
     nouns_array = pickup_nouns(session[:abuse])
     searched = Status.where(generate_or_condition(nouns_array))
-    @statuses = searched.page(params[:page]).per(10).order(id: :desc)
+    @statuses = searched.page(params[:page]).order(id: :desc)
 
     @fluentd.post('record', {
       :text => session[:abuse],

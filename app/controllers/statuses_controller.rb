@@ -32,7 +32,7 @@ class StatusesController < ApplicationController
   end
 
   def index
-    @statuses = Status.page(params[:page]).per(10).order(id: :desc)
+    @statuses = Status.page(params[:page]).order(id: :desc)
 
     respond_to do |format|
       format.html

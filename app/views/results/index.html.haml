@@ -37,7 +37,7 @@
                 = f.text_field :text_contains
                 = f.submit "検索する", :class => 'btn btn-primary'
 
-          = paginate @statuses
+          = paginate @statuses, :window => 8
 
   %p.pull-left.pager
     = link_to "罵倒文一覧に戻る", statuses_path
