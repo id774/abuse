@@ -1,4 +1,4 @@
-# Version:20131205
+# Version:20131220
 
 source 'https://rubygems.org'
 
@@ -13,7 +13,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'haml-rails'
-gem 'compass-rails'
+#gem 'compass-rails'
 gem 'i18n_generators'
 gem 'fluent-logger'
 
