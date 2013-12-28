@@ -5,8 +5,6 @@ require 'fluent-logger'
 
 class ResultsController < ApplicationController
   def index
-    @fluentd = Fluent::Logger::FluentLogger.open('abuse',
-      host = 'localhost', port = 10000)
 
     @arel_table = Status.arel_table
     session[:abuse] ||= ""
@@ -15,10 +13,15 @@ class ResultsController < ApplicationController
     searched = Status.where(generate_or_condition(nouns_array))
     @statuses = searched.page(params[:page]).order(id: :desc)
 
-    @fluentd.post('record', {
-      :text => session[:abuse],
-      :match => @statuses.length
-    })
+    if Rails.env.production?
+      @fluentd = SingletonFluentd.instance.fluentd
+      @fluentd = Fluent::Logger::FluentLogger.open('abuse',
+        host = 'localhost', port = 10000)
+      @fluentd.post('record', {
+        :text => session[:abuse],
+        :match => @statuses.length
+      })
+    end
 
     respond_to do |format|
       format.html
