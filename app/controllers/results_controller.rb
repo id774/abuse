@@ -3,6 +3,19 @@
 require 'MeCab'
 require 'fluent-logger'
 
+class SingletonFluentd
+  include Singleton
+
+  def initialize
+    @fluentd = Fluent::Logger::FluentLogger.open('abuse',
+      host = 'localhost', port = 9999)
+  end
+
+  def fluentd
+    @fluentd
+  end
+end
+
 class ResultsController < ApplicationController
   def index
 
@@ -15,8 +28,6 @@ class ResultsController < ApplicationController
 
     if Rails.env.production?
       @fluentd = SingletonFluentd.instance.fluentd
-      @fluentd = Fluent::Logger::FluentLogger.open('abuse',
-        host = 'localhost', port = 10000)
       @fluentd.post('record', {
         :text => session[:abuse],
         :match => @statuses.length
