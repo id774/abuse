@@ -1,23 +1,22 @@
 ja:
   views:
     pagination:
-      previous: "<< 前ページ"
-      next: "次ページ >>"
+      previous: "← 前ページ"
+      next: "次ページ →"
       first: "最初"
       last: "最後"
       truncate: ""
 
-    status:
-      status: "文章"  #g
-      keyword: "キーワード"  #g
+    content:
+      name: "名前"  #g
+      body: "内容"  #g
 
   activerecord:
     models:
-      status: "文章"  #g
-      keyword: "キーワード"  #g
+      name: "名前"  #g
+      body: "内容"  #g
 
     attributes:
       story:
-        status: "文章"  #g
-        keyword: "キーワード"  #g
-
+        name: "名前"  #g
+        body: "内容"  #g
