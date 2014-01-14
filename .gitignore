@@ -12,7 +12,4 @@ tmp/
 coverage
 .sass-cache/
 .rbenv-version
-public/assets/*.css
-public/assets/*.js
-public/assets/*.gz
-public/assets/*.yml
+public/assets/
