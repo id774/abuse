@@ -34,9 +34,18 @@ class ResultsController < ApplicationController
       })
     end
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @statuses }
+    if @statuses.length > 0
+      respond_to do |format|
+        format.html
+        format.json { render json: @statuses }
+      end
+    else
+      respond_to do |format|
+        notice = '罵倒文候補が見つかりませんでした'
+        format.html { redirect_to root_path,
+          notice: notice }
+        format.json { render json: @statuses }
+      end
     end
   end
 
