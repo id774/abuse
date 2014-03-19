@@ -24,7 +24,7 @@ class ResultsController < ApplicationController
 
     nouns_array = pickup_nouns(session[:abuse])
     searched = Status.where(generate_or_condition(nouns_array))
-    @statuses = searched.page(params[:page]).order(id: :desc)
+    @statuses = searched.page(params[:page]).order(updated_at: :desc)
 
     if Rails.env.production?
       @fluentd = SingletonFluentd.instance.fluentd
