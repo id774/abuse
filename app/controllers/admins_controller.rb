@@ -12,7 +12,7 @@ class AdminsController < ApplicationController
 
     respond_to do |format|
       words = @status.text.length
-      if words > 134 and words < 143
+      if words > 128 and words < 143
         if @status.save
           notice = '罵倒文が登録されました'
           format.html { redirect_to new_admin_path,
